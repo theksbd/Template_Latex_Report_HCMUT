@@ -1,0 +1,173 @@
+\documentclass[a4paper]{article}
+\usepackage{a4wide,amssymb,epsfig,latexsym,multicol,array,hhline,fancyhdr}
+\usepackage{vntex}
+\usepackage{amsmath}
+\usepackage{lastpage}
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}							% Standard graphics package
+\usepackage{array}
+\usepackage{tabularx, caption}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{rotating}
+\usepackage{graphics}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{epsfig}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{indentfirst}
+\usetikzlibrary{arrows,snakes,backgrounds}
+\usepackage{hyperref}
+\hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true} 
+%\usepackage{pstcol} 								% PSTricks with the standard color package
+\setlength{\parindent}{0.7cm}
+
+\newtheorem{theorem}{{\bf Theorem}}
+\newtheorem{property}{{\bf Property}}
+\newtheorem{proposition}{{\bf Proposition}}
+\newtheorem{corollary}[proposition]{{\bf Corollary}}
+\newtheorem{lemma}[proposition]{{\bf Lemma}}
+
+\AtBeginDocument{\renewcommand*\contentsname{Contents}}
+\AtBeginDocument{\renewcommand*\refname{References}}
+%\usepackage{fancyhdr}
+\setlength{\headheight}{40pt}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[L]{
+	\begin{tabular}{rl}
+		\begin{picture}(25,15)(0,0)
+		\put(0,-8){\includegraphics[width=8mm, height=8mm]{hcmut.png}}
+		%\put(0,-8){\epsfig{width=10mm,figure=hcmut.eps}}
+		\end{picture}&
+		%\includegraphics[width=8mm, height=8mm]{hcmut.png} & %
+		\begin{tabular}{l}
+			\textbf{\bf \ttfamily University of Technology, Ho Chi Minh City}\\
+			\textbf{\bf \ttfamily Faculty of Computer Science and Engineering}
+		\end{tabular} 	
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{l}
+		\tiny \bf \\
+		\tiny \bf 
+\end{tabular}  }
+\fancyfoot{} % clear all footer fields
+\fancyfoot[L]{\scriptsize \ttfamily Presentation: OS on Supercomputers - Academic year 2020 - 2021}
+\fancyfoot[R]{\scriptsize \ttfamily Page {\thepage}/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0.3pt}
+
+
+%%%
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+\makeatletter
+\newcounter {subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection .\@alph\c@subsubsubsection}
+\newcommand\subsubsubsection{\@startsection{subsubsubsection}{4}{\z@}%
+	{-3.25ex\@plus -1ex \@minus -.2ex}%
+	{1.5ex \@plus .2ex}%
+	{\normalfont\normalsize\bfseries}}
+\newcommand*\l@subsubsubsection{\@dottedtocline{3}{10.0em}{4.1em}}
+\newcommand*{\subsubsubsectionmark}[1]{}
+\makeatother
+
+
+\begin{document}
+	
+	\begin{titlepage}
+		\begin{center}
+			\large{ĐẠI HỌC QUỐC GIA THÀNH PHỐ HỒ CHÍ MINH\\
+				ĐẠI HỌC BÁCH KHOA  \\
+				KHOA KHOA HỌC VÀ KĨ THUẬT MÁY TÍNH}
+		\end{center}
+		
+		\vspace{1cm}
+		
+		\begin{figure}[h!]
+			\begin{center}
+				\includegraphics[scale = 0.4]{hcmut.png}
+			\end{center}
+		\end{figure}
+		
+		\vspace{1cm}
+		
+		
+		\begin{center}
+			\begin{tabular}{c}
+				\multicolumn{1}{c}{\textbf{\Large HỆ ĐIỀU HÀNH (TN) - L09}}\\
+				~~\\
+				\hline
+				\\
+				\multicolumn{1}{l}{\textbf{\Large Bài thuyết trình:}}\\
+				\\
+				\textbf{\huge Supercomputers on}\\
+				\\
+				\textbf{\huge Operating System}\\
+				\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\vspace{1cm}
+		\begin{table}[h]
+			\begin{tabular}{rrl}
+				\hspace{4 cm} & GVHD: & Hoàng Lê Hải Thanh\\
+				& Sinh viên thực hiện: & Võ Hồ Tấn Khang - 1913713 \\
+				& & Trần Lương Vũ - 1915991  \\
+				& & Trịnh Đức Mạnh - 1914126 \\
+				& & Đỗ Thiện Hoàng - 1913418  \\
+			\end{tabular}
+		\end{table}
+		\vspace{2cm}
+		\begin{center}
+			{\footnotesize  TP HỒ CHÍ MINH, THÁNG 5 NĂM 2021}
+		\end{center}
+	\end{titlepage}
+	
+	
+	%\thispagestyle{empty}
+	
+	\newpage
+	\tableofcontents
+	\newpage
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\section{Danh sách thành viên và phân chia công việc}
+	
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\textbf{STT} & \textbf{Họ và tên} & \textbf{MSSV} & \textbf{Phần thuyết trình}\\
+			\hline 
+			%%%%%Student 1%%%%%%%%%%
+			\multirow{3}{*}{1} & \multirow{3}{*}{Trần Lương Vũ} & \multirow{3}{*}{1915991} & Hiện thực System call\\
+			& & & phần Wrapper và Validation\\
+			\hline 
+			%%%%%Student 2%%%%%%%%%%
+			\multirow{3}{*}{2} & \multirow{3}{*}{Võ Hồ Tấn Khang} & \multirow{3}{*}{1913713} &  Hiện thực System call\\ 
+			& & & và phần Trim Kernel\\
+			\hline
+			%%%%%Student 3%%%%%%%%%%
+			\multirow{3}{*}{3} & \multirow{3}{*}{Trịnh Đức Mạnh} & \multirow{3}{*}{1914126} & Tìm hiểu trả lời các câu hỏi\\
+			& &  & Soạn thảo và viết báo cáo\\
+			\hline 
+			%%%%%Student 4%%%%%%%%%%
+			\multirow{3}{*}{4} & \multirow{3}{*}{Đỗ Thiện Hoàng} & \multirow{3}{*}{1913418} & Tìm hiểu trả lời các câu hỏi\\
+			& &  & Soạn thảo và viết báo cáo\\
+			\hline
+			
+			%%%%%Student 3%%%%%%%%%%%
+		\end{tabular}
+	\end{center}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+\end{document}
+
